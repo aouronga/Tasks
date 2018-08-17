@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/controller.js"></script>
+</head>
+
+<body>
+    <!-- <div ng-app="myTask" ng-controller="FirstController">
+        <ul>
+            <li ng-repeat="member in members">
+                {{ member.name }}
+            </li>
+        </ul>
+    </div> -->
+    <div ng-app="myRoute">
+        <ul>
+            <a href="#/">Main</a>
+            <a href="#!one">One</a>
+            <a href="#!two">Two</a>
+
+        </ul>
+        <div ng-view></div>
+    </div>
+    <!-- <div ng-controller="SecondController">
+        <ul>
+            <li ng-repeat="data in alldata">
+                <p>{{ data.id }} - {{ data.title }} - {{ data.completed }}</p>
+            </li>
+        </ul>
+    </div> -->
+
+</body>
+
+</html>
