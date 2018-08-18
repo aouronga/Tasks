@@ -1,0 +1,11 @@
+.messages{
+    min-width: 100%;
+    min-height: 200px;
+    max-height: 200px;
+    background: snow;
+    overflow-y: scroll;
+    border: 2px solid gray;
+}
+.input-area{
+    margin: 15px 0px;
+}

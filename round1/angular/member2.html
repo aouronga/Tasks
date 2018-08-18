@@ -1,0 +1,18 @@
+<div ng-controller="memberTwo">
+    <h3>Member 2</h3>
+    <div class="messages">
+        <ul>
+            <li ng-repeat="message in messages">
+                {{ message }}
+            </li>
+        </ul>
+    </div>
+    <div class="input-area">
+        <div class="form-group">
+            <input type="text" ng-model="textmessage" class="form-control" placeholder="Type your message here">
+        </div>
+        <div class="form-group">
+            <button type="button" ng-click="pushMessage()" class="btn btn-success btn-lg btn-block">Send</button>
+        </div>
+    </div>
+</div>

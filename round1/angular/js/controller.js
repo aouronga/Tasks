@@ -1,21 +1,20 @@
-var app = angular.module("myApp", ['ngRoute']);
-app.config(($routeProvider) => {
-    $routeProvider
-        .when("/", {
-            templateUrl: "add_member.html",
-            controller: "inputCtrl"
-        })
-        .when("/about", {
-            template: "<h2>About us</h2>",
-            controller: "getResultCtrl"
-        });
-});
-var x = app.controller("inputCtrl", ($scope) => {
-    $scope.inputname = "ABC"
+app.controller("memberOne", function ($scope, chatFactory) {
+    let member_id = "Member 1";
+    $scope.pushMessage = function () {
+        
+        chatFactory.setMessage(member_id, $scope.textmessage);
+        $scope.textmessage = ""
+        $scope.messages = chatFactory
+    };
 });
 
-console.log(x)
 
-app.controller("getResultCtrl", ($scope) => {
-    console.log()
-});
+app.controller("memberTwo", function ($scope, chatFactory) {
+    let member_id = "Member 2";
+    $scope.pushMessage = function () {
+        
+        chatFactory.setMessage(member_id, $scope.textmessage);
+        $scope.textmessage = ""
+        $scope.messages = chatFactory
+    };
+})
