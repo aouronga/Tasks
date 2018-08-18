@@ -1,3 +1,4 @@
 {
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "git.ignoreLimitWarning": true
 }
