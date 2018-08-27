@@ -5,5 +5,33 @@ Home - {{ block.super }}
 {% endblock title %}
 
 {%block content%}
-<h1>HELLO</h1>
+{% verbatim %}
+<div class="container" ng-app="ContactsApp">
+    <div ng-controller="ContactsController">
+        <h2><a href="/">Contacts</a></h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col" ng-click="orderByField='name'; reverseSort = !reverseSort">Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="contact in contacts | orderBy:orderByField:reverseSort">
+
+                <td scope="thead">{{ contact.id }}</td><td>{{ contact.name }}</td><td><a ng-click="editcontact(contact.id)" ui-sref-active="active" class="btn btn-sm btn-warning">Edit</a>&nbsp;<a ng-click="deleteContact(contact.id)" class="btn btn-sm btn-danger">Delete</a></td>
+            </tr>
+            <tr style="border: none">
+                <td colspan="2"></td>
+                <td><a ui-sref="add" ui-sref-active="active" class="btn btn-sm btn-success">Add Contact</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ui-view></ui-view>
+
+</div>
+{% endverbatim %}
 {%endblock%}

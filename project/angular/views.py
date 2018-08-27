@@ -5,7 +5,4 @@ from django.shortcuts import render
 from django.contrib import staticfiles
 
 def index(request):
-    context = {
-        "name" : "Hello"
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
