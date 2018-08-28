@@ -2,4 +2,4 @@
 let app = angular.module('ContactsApp', ['ui.router']);
 
 //Hostname
-app.host = location.host;
+app.host = "";
