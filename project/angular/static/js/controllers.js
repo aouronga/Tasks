@@ -1,4 +1,4 @@
-app.controller('ContactsController', function ($scope, $http, $location, EditFactory, DisplayService) {
+app.controller('ContactsController', function ($scope, $http, $location, EditService, DisplayService) {
     DisplayService.getAllData().then(function (response) {
         $scope.contacts = response.data
     });
@@ -15,7 +15,7 @@ app.controller('ContactsController', function ($scope, $http, $location, EditFac
     $scope.editcontact = function (id) {
         $http.get(app.host + '/api/v1/contacts/' + id + '/').then(function (response) {
 
-            EditFactory.contact = response.data;
+            EditService.contact = response.data;
             $location.path('editcontact/' + id)
         });
     }
@@ -25,11 +25,11 @@ app.controller('AddController', function ($scope, $timeout, $http, DisplayServic
 
     $scope.submitData = function () {
         DisplayService.setData($scope.contact)
-            .then(function successCallback(response) {
+            .then(function successCallback() {
                 $timeout(function () {
                     $('.info').addClass('alert alert-success').text("Successfully Saved!")
                 }, 1000)
-            }, function errorCallback(response) {
+            }, function errorCallback() {
                 $timeout(function () {
                     $('.info').addClass('alert alert-danger').text("Failed!")
                 }, 1000)
@@ -43,20 +43,20 @@ app.controller('AddController', function ($scope, $timeout, $http, DisplayServic
     }
 });
 
-app.controller('EditController', function ($scope, $http, $timeout, $location, EditFactory) {
-    $scope.id = EditFactory.contact.id;
-    $scope.contact = EditFactory.contact;
+app.controller('EditController', function ($scope, $http, $timeout, $location, EditService) {
+    $scope.id = EditService.contact.id;
+    $scope.contact = EditService.contact;
     $scope.submitData = function () {
         $http({
             method: 'PUT',
             url: app.host + '/api/v1/contacts/' + $scope.id + '/',
             data: $scope.contact,
             headers: {'Content-Type': 'application/json'}
-        }).then(function successCallback(response) {
+        }).then(function successCallback() {
             $timeout(function () {
                 $('.info').addClass('alert alert-success').text("Successfully Edited!")
             }, 1000)
-        }, function errorCallback(response) {
+        }, function errorCallback() {
             $timeout(function () {
                 $('.info').addClass('alert alert-danger').text("Failed!")
             }, 1000)

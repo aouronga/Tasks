@@ -1,7 +1,7 @@
 app.config(function ($stateProvider) {
     let home = {
         name: 'home',
-        url: '/',
+        url: '',
         templateUrl: '/static/templates/contacts_table.html'
     };
 

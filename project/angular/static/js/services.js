@@ -19,7 +19,7 @@ app.service('DisplayService', function ($http) {
     };
 });
 
-app.factory('EditFactory', function () {
+app.service('EditService', function () {
     var contact = {};
     return contact;
 });
