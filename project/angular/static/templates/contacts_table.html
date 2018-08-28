@@ -1,0 +1,36 @@
+<div ng-controller="ContactsController">
+    <div ng-if="contacts != ''">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col" ng-click="orderByField='name'; reverseSort = !reverseSort">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="contact in contacts | orderBy:orderByField:reverseSort">
+
+                <td scope="thead">{{ contact.id }}</td>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.address }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.email }}</td>
+
+                <td>
+                    <a ng-click="editcontact(contact.id)" ui-sref-active="active"
+                       class="btn btn-sm btn-warning">Edit</a>&nbsp;
+
+                    <a ng-click="deleteContact(contact.id)" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-if="contacts == ''" class="jumbotron">
+        <h2 class="text-center">Nothing to show</h2>
+    </div>
+</div>

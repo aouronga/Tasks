@@ -6,4 +6,4 @@ class ContactsSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Contacts
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'address', 'phone', 'email')
