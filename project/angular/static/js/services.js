@@ -1,16 +1,17 @@
+//To display data in table
 app.service('DisplayService', function ($http) {
-    var service = {};
-    service.setData = function (name) {
+    let service = {};
+    service.setData = function (contact) {
         return $http({
             method: 'POST',
-            url: 'http://127.0.0.1:8000/api/v1/contacts/',
-            data: {name: name},
+            url: app.host + '/api/v1/contacts/',
+            data: contact,
             headers: {'Content-Type': 'application/json'}
         })
     };
 
     service.getAllData = function () {
-        return $http.get('http://127.0.0.1:8000/api/v1/contacts/')
+        return $http.get(app.host + '/api/v1/contacts/')
     };
     return {
         setData: service.setData,
@@ -19,7 +20,6 @@ app.service('DisplayService', function ($http) {
 });
 
 app.factory('EditFactory', function () {
-    this.id = '';
-    this.name = '';
-    return [this.id, this.name]
+    var contact = {};
+    return contact;
 });
