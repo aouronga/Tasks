@@ -31,6 +31,7 @@ app.controller('ContactsController', function ($scope, $http, EditFactory) {
 });
 
 app.controller('AddController', function ($scope, $http) {
+
     $scope.submitData = function () {
         let name = $('#name').val();
         $http({
@@ -38,6 +39,10 @@ app.controller('AddController', function ($scope, $http) {
             url: 'http://127.0.0.1:8000/api/v1/contacts/',
             data: {name: name},
             headers: {'Content-Type': 'application/json'}
+        }).then(function successCallback(response){
+            console.log(response)
+        }, function errorCallback(response){
+            console.log(response)
         });
         window.location.reload()
     }
