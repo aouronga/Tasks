@@ -64,7 +64,7 @@ app.controller('EditController', function ($scope, $http, EditFactory) {
 
 });
 
-let submitBtn = `<input type="submit" value="Save" ng-click="submitData()">`;
+let submitBtn = `<input type="submit" class="btn btn-primary " value="Save" ng-click="submitData()">`;
 let addTemplate = `<div ng-controller="AddController">` + `<input type="text" class="form-control" ng-model="name" id="name" placeholder="Add New Contact">` + submitBtn + `</div>`;
 let editTemplate = `<div ng-controller="EditController">` + `<input type="text" class="form-control" placeholder="Edit Contact" ng-model="name" ng-change="checkData()">` + submitBtn + `</div>`;
 
