@@ -8,8 +8,14 @@ app.controller('ContactsController', function ($scope, $http, $location, EditSer
             method: 'DELETE',
             url: app.host + '/api/v1/contacts/' + id + '/',
             headers: {'Content-Type': 'application/json'}
+        }).then(function successCallback() {
+            DisplayService.getAllData().then(function (response) {
+                $scope.contacts = response.data
+            });
+
+        }, function errorCallback(response) {
+                console.log(response)
         });
-        window.location.reload()
     };
 
     $scope.editcontact = function (id) {
@@ -27,7 +33,7 @@ app.controller('AddController', function ($scope, $timeout, $http, RestrictToNum
         $http({
             method: 'POST',
             url: app.host + '/api/v1/contacts/',
-            data: contact,
+            data: $scope.contact,
             headers: {'Content-Type': 'application/json'}
         }).then(function successCallback() {
             $timeout(function () {
@@ -42,7 +48,7 @@ app.controller('AddController', function ($scope, $timeout, $http, RestrictToNum
     $scope.checkData = function () {
         let name = $scope.contact.name;
 
-        if(RestrictToNumberService.checkNumber(name)){
+        if (RestrictToNumberService.checkNumber(name)) {
             $scope.contact.name = $scope.contact.name.substring(0, $scope.contact.name.length - 1)
         }
     }
@@ -70,7 +76,7 @@ app.controller('EditController', function ($scope, $http, $timeout, $location, E
     $scope.checkData = function () {
         let name = $scope.contact.name;
 
-        if(RestrictToNumberService.checkNumber(name)){
+        if (RestrictToNumberService.checkNumber(name)) {
             $scope.contact.name = $scope.contact.name.substring(0, $scope.contact.name.length - 1)
         }
     }
