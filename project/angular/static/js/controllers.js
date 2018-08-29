@@ -21,7 +21,7 @@ app.controller('ContactsController', function ($scope, $http, $location, EditSer
     }
 });
 
-app.controller('AddController', function ($scope, $timeout, $http, DisplayService) {
+app.controller('AddController', function ($scope, $timeout, $http, RestrictToNumberService) {
 
     $scope.submitData = function () {
         $http({
@@ -40,14 +40,15 @@ app.controller('AddController', function ($scope, $timeout, $http, DisplayServic
         });
     };
     $scope.checkData = function () {
-        let matches = $scope.contact.name.match(/\d+/g);
-        if (matches != null) {
+        let name = $scope.contact.name;
+
+        if(RestrictToNumberService.checkNumber(name)){
             $scope.contact.name = $scope.contact.name.substring(0, $scope.contact.name.length - 1)
         }
     }
 });
 
-app.controller('EditController', function ($scope, $http, $timeout, $location, EditService) {
+app.controller('EditController', function ($scope, $http, $timeout, $location, EditService, RestrictToNumberService) {
     $scope.id = EditService.contact.id;
     $scope.contact = EditService.contact;
     $scope.submitData = function () {
@@ -67,8 +68,9 @@ app.controller('EditController', function ($scope, $http, $timeout, $location, E
         });
     };
     $scope.checkData = function () {
-        let matches = $scope.contact.name.match(/\d+/g);
-        if (matches != null) {
+        let name = $scope.contact.name;
+
+        if(RestrictToNumberService.checkNumber(name)){
             $scope.contact.name = $scope.contact.name.substring(0, $scope.contact.name.length - 1)
         }
     }
