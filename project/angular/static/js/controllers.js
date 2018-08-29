@@ -37,11 +37,11 @@ app.controller('AddController', function ($scope, $timeout, $http, RestrictToNum
             headers: {'Content-Type': 'application/json'}
         }).then(function successCallback() {
             $timeout(function () {
-                $('.info').addClass('alert alert-success').text("Successfully Saved!")
+                angular.element(document.querySelector('.info')).addClass('alert alert-success').text("Successfully Saved!")
             }, 1000)
         }, function errorCallback() {
             $timeout(function () {
-                $('.info').addClass('alert alert-danger').text("Failed!")
+                angular.element(document.querySelector('.info')).addClass('alert alert-danger').text("Failed!")
             }, 1000)
         });
     };
@@ -64,11 +64,12 @@ app.controller('EditController', function ($scope, $http, $timeout, $location, E
             headers: {'Content-Type': 'application/json'}
         }).then(function successCallback() {
             $timeout(function () {
-                $('.info').addClass('alert alert-success').text("Successfully Edited!")
+                angular.element(document.querySelector('.info')).addClass('alert alert-success').text("Successfully Edited!");
+
             }, 1000)
         }, function errorCallback() {
             $timeout(function () {
-                $('.info').addClass('alert alert-danger').text("Failed!")
+                angular.element(document.querySelector('.info')).addClass('alert alert-danger').text("Failed!")
             }, 1000)
         });
     };
