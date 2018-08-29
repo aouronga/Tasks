@@ -1,6 +1,10 @@
 app.config(function ($stateProvider) {
     $stateProvider
         .state('home', {
+            url: '/',
+            templateUrl: '/static/templates/contacts_table.html'
+        })
+        .state('index', {
             url: '',
             templateUrl: '/static/templates/contacts_table.html'
         })
@@ -11,5 +15,5 @@ app.config(function ($stateProvider) {
         .state('editcontact', {
             url: '/editcontact/{contactid}',
             templateUrl: '/static/templates/edit.html',
-        })
+        });
 });
