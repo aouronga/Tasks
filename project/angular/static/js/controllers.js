@@ -24,16 +24,20 @@ app.controller('ContactsController', function ($scope, $http, $location, EditSer
 app.controller('AddController', function ($scope, $timeout, $http, DisplayService) {
 
     $scope.submitData = function () {
-        DisplayService.setData($scope.contact)
-            .then(function successCallback() {
-                $timeout(function () {
-                    $('.info').addClass('alert alert-success').text("Successfully Saved!")
-                }, 1000)
-            }, function errorCallback() {
-                $timeout(function () {
-                    $('.info').addClass('alert alert-danger').text("Failed!")
-                }, 1000)
-            });
+        $http({
+            method: 'POST',
+            url: app.host + '/api/v1/contacts/',
+            data: contact,
+            headers: {'Content-Type': 'application/json'}
+        }).then(function successCallback() {
+            $timeout(function () {
+                $('.info').addClass('alert alert-success').text("Successfully Saved!")
+            }, 1000)
+        }, function errorCallback() {
+            $timeout(function () {
+                $('.info').addClass('alert alert-danger').text("Failed!")
+            }, 1000)
+        });
     };
     $scope.checkData = function () {
         let matches = $scope.contact.name.match(/\d+/g);
