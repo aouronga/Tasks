@@ -13,3 +13,15 @@ app.service('EditService', function () {
     var contact = {};
     return contact;
 });
+
+app.factory("RestrictToNumberService", function () {
+
+    return {
+        checkNumber: function (name) {
+            let matches = name.match(/\d+/g);
+            if (matches != null) {
+                return true;
+            }
+        }
+    };
+});
