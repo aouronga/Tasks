@@ -1,12 +1,11 @@
 //To display data in table
 app.service('DisplayService', function ($http) {
-    let service = {};
-    service.getAllData = function () {
-        return $http.get(app.host + '/api/v1/contacts/')
-    };
+
     return {
-        getAllData: service.getAllData
-    };
+        getAllData: function () {
+            return $http.get(app.host + '/api/v1/contacts/')
+        }
+    }
 });
 
 app.service('EditService', function () {
@@ -17,7 +16,7 @@ app.service('EditService', function () {
 app.factory("RestrictToNumberService", function () {
 
     return {
-        checkNumber: function (name='') {
+        checkNumber: function (name = '') {
             let matches = name.match(/\d+/g);
             if (matches != null) {
                 return true;
