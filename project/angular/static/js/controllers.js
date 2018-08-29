@@ -14,7 +14,7 @@ app.controller('ContactsController', function ($scope, $http, $location, EditSer
             });
 
         }, function errorCallback(response) {
-                console.log(response)
+            console.log(response)
         });
     };
 
@@ -45,13 +45,12 @@ app.controller('AddController', function ($scope, $timeout, $http, RestrictToNum
             }, 1000)
         });
     };
-    $scope.checkData = function () {
-        let name = $scope.contact.name;
 
+    $scope.$watch('contact.name', function (name) {
         if (RestrictToNumberService.checkNumber(name)) {
             $scope.contact.name = $scope.contact.name.substring(0, $scope.contact.name.length - 1)
         }
-    }
+    })
 });
 
 app.controller('EditController', function ($scope, $http, $timeout, $location, EditService, RestrictToNumberService) {
@@ -73,12 +72,10 @@ app.controller('EditController', function ($scope, $http, $timeout, $location, E
             }, 1000)
         });
     };
-    $scope.checkData = function () {
-        let name = $scope.contact.name;
-
+    $scope.$watch('contact.name', function (name) {
         if (RestrictToNumberService.checkNumber(name)) {
             $scope.contact.name = $scope.contact.name.substring(0, $scope.contact.name.length - 1)
         }
-    }
+    })
 
 });

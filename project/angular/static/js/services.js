@@ -17,7 +17,7 @@ app.service('EditService', function () {
 app.factory("RestrictToNumberService", function () {
 
     return {
-        checkNumber: function (name) {
+        checkNumber: function (name='') {
             let matches = name.match(/\d+/g);
             if (matches != null) {
                 return true;
